@@ -488,10 +488,10 @@ class CBCloudAPI(BaseAPI):
             >>> cb.validate_process_query("process_name:chrome.exe") # True
         """
         args = {"q": query}
-        url = "/api/investigate/v1/orgs/{}/processes/search_validation".format(
+        url = "/api/investigate/v2/orgs/{}/processes/search_validation".format(
             self.credentials.org_key
         )
-        resp = self.get_object(url, query_parameters=args)
+        resp = self.post_object(url, query_parameters=args)
 
         return resp.get("valid", False)
 
